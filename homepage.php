@@ -2,6 +2,11 @@
 session_start();
 include("connect.php");
 
+if (!isset($_SESSION['email'])) {
+    header("Location: index.php");
+    exit();
+}
+
 // Handle job form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["job-title"])) {
     $title = mysqli_real_escape_string($conn, $_POST["job-title"]);
@@ -47,10 +52,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["job-title"])) {
                 </a>
             </nav>
             <div class="logout">
-                <a href="#" id="logout-btn">
+                <a href="logout.php" id="logout-btn">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>Log out</span>
                 </a>
+
             </div>
         </div>
 
