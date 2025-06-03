@@ -183,21 +183,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["job-title"])) {
                                     echo "<tr>";
                                     echo "<td>" . $row['id'] . "</td>";
                                     echo "<td>" . htmlspecialchars($row['title']) . "</td>";
-                                    echo "<td><button>Edit</button> <button>Delete</button></td>";
+                                    echo "<td><button onclick='deleteJob(" . $row['id'] . ")'>Delete</button></td>";
+                                    echo "<td><button onclick='editJob(" . $row['id'] . ")'>Edit</button></td>";
                                     echo "</tr>";
                                 }
-                            }
-
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                echo "<tr>";
-                                echo "<td>" . $row['id'] . "</td>";
-                                echo "<td>" . htmlspecialchars($row['title']) . "</td>";
-                                echo "<td><button>Edit</button> <button>Delete</button></td>";
-                                echo "</tr>";
                             }
                         ?>
                         </tbody>
                     </table>
+                    
                 </div>
 
                 <button id="generate-link-btn" class="btn btn-secondary">Generate Link</button>
